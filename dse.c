@@ -1,14 +1,18 @@
 #include <stdint.h>
+#include "dse.h"
 
-#define PINGPONG_REG   0x39020000
-#define CTRLSEL_REG    0x39020004
-#define MAX_INSTR_REG  0x39020008
-#define EPOCH_REG      0x39020010
-#define ROBSIZE0_REG   0x39020100
-#define ROBSIZE1_REG   0x39020108
-#define MAX_INSTR_CNT  100000
 
-static const uint64_t robsize_array[] = {0, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2};
+// static const uint64_t robsize_array[] = {1024, 512, 256, 128, 64, 32, 16, 8, 4, 2};
+static const uint64_t robsize_array[] = {64};
+static const uint64_t lqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
+// static const uint64_t lqsize_array[] = {32};
+static const uint64_t sqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
+// static const uint64_t sqsize_array[] = {24};
+// static const uint64_t ftqsize_array[] = {128, 64, 32, 16, 12, 8, 4, 2};
+static const uint64_t ftqsize_array[] = {16};
+// static const uint64_t ibsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
+static const uint64_t ibsize_array[] = {32};
+
 
 void main() {
 
@@ -22,10 +26,25 @@ void main() {
     uint64_t epoch = *(volatile uint64_t *)EPOCH_REG;
 
     // 根据 ctrlsel 写入 robsize 寄存器
+    // if (*(volatile uint8_t *)PINGPONG_REG == 0) {
+    //     *(volatile uint64_t *)ROBSIZE0_REG = robsize_array[epoch % (sizeof(robsize_array) / sizeof(robsize_array[0]))];
+    // } else {
+    //     *(volatile uint64_t *)ROBSIZE1_REG = robsize_array[epoch % (sizeof(robsize_array) / sizeof(robsize_array[0]))];
+    // }
+
+    // 根据 ctrlsel 写入参数寄存器
     if (*(volatile uint8_t *)PINGPONG_REG == 0) {
         *(volatile uint64_t *)ROBSIZE0_REG = robsize_array[epoch % (sizeof(robsize_array) / sizeof(robsize_array[0]))];
+        *(volatile uint64_t *)LQSIZE0_REG = lqsize_array[epoch % (sizeof(lqsize_array) / sizeof(lqsize_array[0]))];
+        *(volatile uint64_t *)SQSIZE0_REG = sqsize_array[epoch % (sizeof(sqsize_array) / sizeof(sqsize_array[0]))];
+        *(volatile uint64_t *)FTQ0_REG = ftqsize_array[epoch % (sizeof(ftqsize_array) / sizeof(ftqsize_array[0]))];
+        *(volatile uint64_t *)IBUFSIZE0_REG = ibsize_array[epoch % (sizeof(ibsize_array) / sizeof(ibsize_array[0]))];
     } else {
         *(volatile uint64_t *)ROBSIZE1_REG = robsize_array[epoch % (sizeof(robsize_array) / sizeof(robsize_array[0]))];
+        *(volatile uint64_t *)LQSIZE1_REG = lqsize_array[epoch % (sizeof(lqsize_array) / sizeof(lqsize_array[0]))];
+        *(volatile uint64_t *)SQSIZE1_REG = sqsize_array[epoch % (sizeof(sqsize_array) / sizeof(sqsize_array[0]))];
+        *(volatile uint64_t *)FTQ1_REG = ftqsize_array[epoch % (sizeof(ftqsize_array) / sizeof(ftqsize_array[0]))];
+        *(volatile uint64_t *)IBUFSIZE1_REG = ibsize_array[epoch % (sizeof(ibsize_array) / sizeof(ibsize_array[0]))];
     }
 
     // 增加 epoch
