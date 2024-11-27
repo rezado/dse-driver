@@ -2,22 +2,25 @@
 #include "dse.h"
 
 
-// static const uint64_t robsize_array[] = {1024, 512, 256, 128, 64, 32, 16, 8, 4, 2};
-static const uint64_t robsize_array[] = {64};
-static const uint64_t lqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
-// static const uint64_t lqsize_array[] = {32};
-static const uint64_t sqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
-// static const uint64_t sqsize_array[] = {24};
+static const uint64_t robsize_array[] = {1024, 512, 256, 128, 64, 32, 16, 8, 4, 2};
+// static const uint64_t robsize_array[] = {64};
+// static const uint64_t lqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
+static const uint64_t lqsize_array[] = {32};
+// static const uint64_t sqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
+static const uint64_t sqsize_array[] = {24};
 // static const uint64_t ftqsize_array[] = {128, 64, 32, 16, 12, 8, 4, 2};
 static const uint64_t ftqsize_array[] = {16};
 // static const uint64_t ibsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
-static const uint64_t ibsize_array[] = {32};
+static const uint64_t ibsize_array[] = {16};
 
 
 void main() {
 
     // 写入 MAX_INSTR_REG
     *(volatile uint64_t *)MAX_INSTR_REG = MAX_INSTR_CNT;
+
+    // 写入 MAX_EPOCH_REG
+    *(volatile uint64_t *)MAX_EPOCH_REG = 2;
 
     // 读取 ping-pong 寄存器并反转
     *(volatile uint8_t *)PINGPONG_REG ^= 1;
