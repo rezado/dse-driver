@@ -3,7 +3,7 @@
 #include "dse.h"
 
 
-static const uint64_t robsize_array[] = {1024, 512, 256, 128, 64, 32, 16, 8, 4, 2};
+static const uint64_t robsize_array[] = {256, 128, 64, 32, 16, 8, 4, 2};
 // static const uint64_t robsize_array[] = {64};
 // static const uint64_t lqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
 static const uint64_t lqsize_array[] = {32};
@@ -13,9 +13,9 @@ static const uint64_t sqsize_array[] = {24};
 static const uint64_t ftqsize_array[] = {16};
 // static const uint64_t ibsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
 static const uint64_t ibsize_array[] = {16};
-static const uint64_t intdqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
-static const uint64_t fpdqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
-static const uint64_t lsdqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
+static const uint64_t intdqsize_array[] = {12, 8, 4, 2};
+static const uint64_t fpdqsize_array[] = {12, 8, 4, 2};
+static const uint64_t lsdqsize_array[] = {12, 8, 4, 2};
 
 
 void main() {
