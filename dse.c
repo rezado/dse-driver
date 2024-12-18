@@ -3,8 +3,8 @@
 #include "dse.h"
 
 
-static const uint64_t robsize_array[] = {1024, 512, 256, 128, 64, 32, 16, 8, 4, 2};
-// static const uint64_t robsize_array[] = {64};
+// static const uint64_t robsize_array[] = {256, 128, 64, 32, 16, 8, 4, 2};
+static const uint64_t robsize_array[] = {64};
 // static const uint64_t lqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
 static const uint64_t lqsize_array[] = {32};
 // static const uint64_t sqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
@@ -13,9 +13,16 @@ static const uint64_t sqsize_array[] = {24};
 static const uint64_t ftqsize_array[] = {16};
 // static const uint64_t ibsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
 static const uint64_t ibsize_array[] = {16};
-static const uint64_t intdqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
-static const uint64_t fpdqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
-static const uint64_t lsdqsize_array[] = {256, 128, 64, 32, 16, 12, 8, 4, 2};
+// static const uint64_t intdqsize_array[] = {12, 8, 4, 2};
+static const uint64_t intdqsize_array[] = {12};
+// static const uint64_t fpdqsize_array[] = {12, 8, 4, 2};
+static const uint64_t fpdqsize_array[] = {12};
+// static const uint64_t lsdqsize_array[] = {12, 8, 4, 2};
+static const uint64_t lsdqsize_array[] = {12};
+// static const uint64_t l2mshrs_array[] = {14, 6, 1};
+static const uint64_t l2mshrs_array[] = {14};
+// static const uint64_t l3mshrs_array[] = {14, 6, 1};
+static const uint64_t l3mshrs_array[] = {14};
 
 
 void main() {
@@ -49,6 +56,8 @@ void main() {
         *(volatile uint64_t *)INTDQSIZE0_REG = intdqsize_array[epoch % (sizeof(intdqsize_array) / sizeof(intdqsize_array[0]))];
         *(volatile uint64_t *)FPDQSIZE0_REG = fpdqsize_array[epoch % (sizeof(fpdqsize_array) / sizeof(fpdqsize_array[0]))];
         *(volatile uint64_t *)LSDQSIZE0_REG = lsdqsize_array[epoch % (sizeof(lsdqsize_array) / sizeof(lsdqsize_array[0]))];
+        *(volatile uint64_t *)L2MSHRS0_REG = l2mshrs_array[epoch % (sizeof(l2mshrs_array) / sizeof(l2mshrs_array[0]))];
+        *(volatile uint64_t *)L3MSHRS0_REG = l3mshrs_array[epoch % (sizeof(l3mshrs_array) / sizeof(l3mshrs_array[0]))];
     } else {
         *(volatile uint64_t *)ROBSIZE1_REG = robsize_array[epoch % (sizeof(robsize_array) / sizeof(robsize_array[0]))];
         *(volatile uint64_t *)LQSIZE1_REG = lqsize_array[epoch % (sizeof(lqsize_array) / sizeof(lqsize_array[0]))];
@@ -58,6 +67,8 @@ void main() {
         *(volatile uint64_t *)INTDQSIZE1_REG = intdqsize_array[epoch % (sizeof(intdqsize_array) / sizeof(intdqsize_array[0]))];
         *(volatile uint64_t *)FPDQSIZE1_REG = fpdqsize_array[epoch % (sizeof(fpdqsize_array) / sizeof(fpdqsize_array[0]))];
         *(volatile uint64_t *)LSDQSIZE1_REG = lsdqsize_array[epoch % (sizeof(lsdqsize_array) / sizeof(lsdqsize_array[0]))];
+        *(volatile uint64_t *)L2MSHRS1_REG = l2mshrs_array[epoch % (sizeof(l2mshrs_array) / sizeof(l2mshrs_array[0]))];
+        *(volatile uint64_t *)L3MSHRS1_REG = l3mshrs_array[epoch % (sizeof(l3mshrs_array) / sizeof(l3mshrs_array[0]))];
     }
 
     // 打印信息
