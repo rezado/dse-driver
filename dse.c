@@ -23,6 +23,10 @@ static const uint64_t lsdqsize_array[] = {12};
 static const uint64_t l2mshrs_array[] = {14};
 // static const uint64_t l3mshrs_array[] = {14, 6, 1};
 static const uint64_t l3mshrs_array[] = {14};
+// static const uint64_t l2sets_array[] = {128, 64};
+static const uint64_t l2sets_array[] = {128};
+// static const uint64_t l3sets_array[] = {1024, 512};
+static const uint64_t l3sets_array[] = {1024};
 
 
 void main() {
@@ -58,6 +62,8 @@ void main() {
         *(volatile uint64_t *)LSDQSIZE0_REG = lsdqsize_array[epoch % (sizeof(lsdqsize_array) / sizeof(lsdqsize_array[0]))];
         *(volatile uint64_t *)L2MSHRS0_REG = l2mshrs_array[epoch % (sizeof(l2mshrs_array) / sizeof(l2mshrs_array[0]))];
         *(volatile uint64_t *)L3MSHRS0_REG = l3mshrs_array[epoch % (sizeof(l3mshrs_array) / sizeof(l3mshrs_array[0]))];
+        *(volatile uint64_t *)L2SETS0_REG = l2sets_array[epoch % (sizeof(l2sets_array) / sizeof(l2sets_array[0]))];
+        *(volatile uint64_t *)L3SETS0_REG = l3sets_array[epoch % (sizeof(l3sets_array) / sizeof(l3sets_array[0]))];
     } else {
         *(volatile uint64_t *)ROBSIZE1_REG = robsize_array[epoch % (sizeof(robsize_array) / sizeof(robsize_array[0]))];
         *(volatile uint64_t *)LQSIZE1_REG = lqsize_array[epoch % (sizeof(lqsize_array) / sizeof(lqsize_array[0]))];
@@ -69,6 +75,8 @@ void main() {
         *(volatile uint64_t *)LSDQSIZE1_REG = lsdqsize_array[epoch % (sizeof(lsdqsize_array) / sizeof(lsdqsize_array[0]))];
         *(volatile uint64_t *)L2MSHRS1_REG = l2mshrs_array[epoch % (sizeof(l2mshrs_array) / sizeof(l2mshrs_array[0]))];
         *(volatile uint64_t *)L3MSHRS1_REG = l3mshrs_array[epoch % (sizeof(l3mshrs_array) / sizeof(l3mshrs_array[0]))];
+        *(volatile uint64_t *)L2SETS1_REG = l2sets_array[epoch % (sizeof(l2sets_array) / sizeof(l2sets_array[0]))];
+        *(volatile uint64_t *)L3SETS1_REG = l3sets_array[epoch % (sizeof(l3sets_array) / sizeof(l3sets_array[0]))];
     }
 
     // 打印信息
