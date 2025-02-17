@@ -31,6 +31,21 @@
 #define L3SETS0_REG    0x390201B0
 #define L3SETS1_REG    0x390201B8
 
-#define MAX_INSTR_CNT  1000000000
+#define MAX_INSTR_CNT  10000
+
+#define BASE_ADDR       0x31310000
+#define ROBSIZE_ADDR    (BASE_ADDR + 0x00)
+#define LQSIZE_ADDR     (BASE_ADDR + 0x08)
+#define SQSIZE_ADDR     (BASE_ADDR + 0x10)
+#define FTQSIZE_ADDR    (BASE_ADDR + 0x18)
+#define IBUFSIZE_ADDR   (BASE_ADDR + 0x20)
+#define INTDQSIZE_ADDR  (BASE_ADDR + 0x28)
+#define FPDQSIZE_ADDR   (BASE_ADDR + 0x30)
+#define LSDQSIZE_ADDR   (BASE_ADDR + 0x38)
+#define L2MSHRS_ADDR    (BASE_ADDR + 0x40)
+#define L3MSHRS_ADDR    (BASE_ADDR + 0x48)
+#define L2SETS_ADDR     (BASE_ADDR + 0x50)
+#define L3SETS_ADDR     (BASE_ADDR + 0x58)
+
 
 #endif
