@@ -47,5 +47,7 @@
 #define L2SETS_ADDR     (BASE_ADDR + 0x50)
 #define L3SETS_ADDR     (BASE_ADDR + 0x58)
 
+#define MAX_EPOCH_ADDR  (BASE_ADDR + 0x1000)
+
 
 #endif
